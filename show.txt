@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+	if(argc==1){//check wether the argument count equal to 1
+		printf("error\n");
+	}
+	else if(argc>2){//check wether the argument count greater than 2
+		printf("not match to the process!! error\n");
+	}
+	else{
+		
+		FILE *fp = fopen(argv[1],"r");//open the file which is given as a argument 
+		if(fp == NULL) {
+			printf("Could not open file\n");
+			return -1;
+		}
+
+		char c;
+		while(1) {//infinite loop
+			c = fgetc(fp);//c variable gets the input characters from the file opened
+			if(c == EOF) break;//when variable is equals to EOF it break the code
+			printf("%c",c);
+		}
+		fclose(fp);//close file
+  
+  return 0;
+	}
+}
